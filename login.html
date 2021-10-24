@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>twitter|Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+  	a {
+  text-decoration: none;
+}
+body {
+  background: -webkit-linear-gradient(bottom, #2d77bd, #7bb5f7);
+  background-repeat: no-repeat;
+  height: 100%;
+}
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+
+#card {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 430px;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+#card-content {
+  padding: 12px 44px;
+}
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+#signup {
+  color: #2d8fbd;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+#submit {
+    background: -webkit-linear-gradient(bottom, #2d77bd, #7bb5f7);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 1px 8px #2493c6;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+ margin-top: 10px;
+  transition: 0.25s;
+  width: 153px;
+}
+#submit:hover {
+  box-shadow: 0px 1px 18px #2485c6;
+}
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.form-border {
+    background: -webkit-linear-gradient(bottom, #2d77bd, #7bb5f7);
+  height: 1px;
+  width: 100%;
+}
+input {
+  background-color: #eee;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  	
+}
+
+.form-content {
+  border: none;
+  outline: none;
+}
+.underline-title {
+    background: -webkit-linear-gradient(bottom, #2d77bd, #7bb5f7);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 90%;
+}
+
+  </style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+  <div id="card">
+    <div id="card-content">
+      <div id="card-title">
+        <h2>LOGIN</h2>
+        <div class="underline-title"></div>
+      </div>
+      <form class="form">
+      	<img src="https://cdn3.iconfinder.com/data/icons/social-media-circle/512/circle-twitter-512.png"width="75"height="75" style="padding-bottom: 20px">
+        
+        <input id="name" class="form-content" type="text" placeholder="Name" autocomplete="on" required />
+        
+        <!-- <input id="email" class="form-content" type="email" placeholder="Email" autocomplete="on" required />
+        <input id="phone" class="form-content" type="text" placeholder="Phone" autocomplete="on" required /> -->
+        <input id="password" class="form-content" type="password" placeholder="Password" autocomplete="on" required />
+
+       
+        <input id="submit" type="submit"  onclick="login()" value="Login"class="btn">      </input>
+        <a href="#" id="signup">new user ? Register</a>
+        <script>
+         
+           
+            function login(){
+                console.log("clicked");
+
+                var user={};
+                user.name=$("#name").prop('value');
+                console.log("name : "+user.name);
+                // user.email=$("#email").prop('value');
+                // console.log("email : "+user.email);
+                // user.phone=$("#phone").prop('value');
+                // console.log("phone : "+user.phone);
+                user.password=$("#password").prop('value');
+                console.log("password : "+user.password);
+                var data=JSON.stringify(user);
+        post(data)
+            }
+        
+            function post(data) {
+                var req = new XMLHttpRequest();
+                req.open('POST', "http://localhost:8080/signin", true);
+
+        req.setRequestHeader('Content-type',"application/json");
+        req.onreadystatechange=function(){
+            // if(this.readyState==4&&this.status==200){
+            //     var resonse=this.responseText;
+            //     if (response.register==true) {
+            //         sessionStorage.setItem("register",true)
+            //         window.location.replace("./home.html");
+            //     } else {
+            //         window.alert("Registration failed")
+            //     }
+            // }
+        }
+        req.send(data);
+                
+            }
+        </script>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
